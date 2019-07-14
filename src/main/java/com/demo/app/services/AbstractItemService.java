@@ -18,9 +18,4 @@ public class AbstractItemService {
 		items.add(item);
 		return new ItemResponse(message, ItemConstants.STATUS_SUCCESS, items);
 	}
-
-	public ItemResponse createFailureResponse(Item item, String message) {
-		List<Item> items = new ArrayList<>();
-		return new ItemResponse(message, ItemConstants.STATUS_FAILURE, items);
-	}
 }

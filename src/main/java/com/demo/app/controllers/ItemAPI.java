@@ -1,6 +1,8 @@
 package com.demo.app.controllers;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,6 @@ public class ItemAPI {
 	@Autowired
 	private ItemService itemService;
 
-
 	@GetMapping
 	public ResponseEntity<ItemResponse> findAll() {
 		return ResponseEntity.ok(itemService.findAll());
@@ -36,7 +37,7 @@ public class ItemAPI {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<ItemResponse> findById(@PathVariable Long id) {
+	public ResponseEntity<ItemResponse> findById(@PathVariable @Digits(fraction = 0, integer = 1000) Long id) {
 		return ResponseEntity.ok(itemService.findById(id));
 	}
 
